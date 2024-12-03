@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo.cjxt.mapper.CjxtScoreDetailMapper">
+
+    <select id="queryListMx" resultType="org.jeecg.modules.demo.cjxt.entity.CjxtScoreDetail">
+        SELECT
+            user_id as userId,
+            user_name as userName,
+            sum(score) as score
+        FROM
+            cjxt_score_detail
+        WHERE
+            del_flag = '0'
+        GROUP BY
+            user_id,
+            user_name
+        order by sum(score) desc
+    </select>
+
+</mapper>
